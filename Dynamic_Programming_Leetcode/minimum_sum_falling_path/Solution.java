@@ -1,7 +1,7 @@
 // problem : https://leetcode.com/problems/minimum-falling-path-sum/
 // concept : (mine)
 /**
- * If we have to choose the minimum path according to a certain conditio then it will be as,current path
+ * If we have to choose the minimum path according to a certain condition then it will be as,current path
  * value + min(all possible path value).Because we have to tak the current path.Now to minimize it we can
  * take the minimum of the previous possible ones.
  * 
