@@ -2,7 +2,7 @@
  * links : https://leetcode.com/problems/course-schedule/submissions/
  */
 
-package TopologicalSortProblems;
+package TopologicalSortProblems.CourseSchedulingPossible;
 import java.util.*;
 public class Solutions {
     public boolean topoSort(int numCources,Map<Integer,ArrayList<Integer>> graph,int[] inDegree){

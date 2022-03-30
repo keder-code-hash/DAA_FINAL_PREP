@@ -1,10 +1,13 @@
-package TopologicalSortProblems;
+// package TopologicalSortProblems;
 import java.io.IOException; 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class TopologicalSort{
+     
+    // using BFS
+    // complexity = θ(edge+nodes)
     public static void topoSort(int[][] adjMat,int nodes) {
         boolean[] visited=new boolean[nodes];
         int[] inDegree=new int[nodes];
@@ -52,6 +55,28 @@ public class TopologicalSort{
             System.out.print(i+" ");
         }
     }
+    
+    public static void dfsUtil(ArrayList<Integer> res,int[][] adjMat,boolean[] visited,int nodes,int curr){
+        visited[curr]=true;
+        for(int u=0;u<nodes;u++){
+            if(adjMat[curr][u]==1 && visited[u]==false){  
+                dfsUtil(res,adjMat, visited, nodes, u);
+            }
+        }
+        res.add(curr);
+    }
+    public static void topoSortDfs(int[][] adjMat,int nodes){
+        boolean[] visited=new boolean[nodes];
+        ArrayList<Integer> res=new ArrayList<>();
+        for(int i=0;i<nodes;i++){
+            if(!visited[i])
+                dfsUtil(res, adjMat, visited, nodes, i);
+        }
+        // print it in reverse order to get topo order 
+        for(int i : res){
+            System.out.print(i+ " ");
+        }
+    }
     public static void main(String[] args) throws IOException{ 
         int[][] adjMat=new int[6][6]; 
         // int[][] sdMat=new int[][]{{0,1},{1,2},{0,3},{1,3},{3,2},{2,4},{2,5},{3,5},{4,5}};
@@ -59,6 +84,7 @@ public class TopologicalSort{
         for(int[] i:sdMat){
             adjMat[i[0]][i[1]]=1;
         }
-        topoSort(adjMat, 6);
+        // topoSort(adjMat, 6);
+        topoSortDfs(adjMat, 6);
     }
 }
