@@ -8,6 +8,7 @@ public class TopologicalSort{
      
     // using BFS
     // complexity = θ(edge+nodes)
+    // kahn's Algorithm
     public static void topoSort(int[][] adjMat,int nodes) {
         boolean[] visited=new boolean[nodes];
         int[] inDegree=new int[nodes];
